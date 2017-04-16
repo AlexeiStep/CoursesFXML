@@ -7,6 +7,7 @@ package coursesfxml.view;
 
 import coursesfxml.Data;
 import coursesfxml.MainApp;
+import coursesfxml.model.Load;
 import coursesfxml.model.Teacher;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -136,9 +137,16 @@ public class TeacherOverviewController {
      */
     @FXML
     private void handleDeleteTeacher() {
-
+        
         int selectedIndex = teachersTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            //Removal of the load after removal of the teacher
+            for(int i=0; i<Data.getLoadsData().size(); i++){
+                if(Data.getLoadsData().get(i).getTeacherCode() == teachersTable.getSelectionModel().getSelectedItem().getCode()){
+                    Data.removeLoad(teachersTable.getSelectionModel().getSelectedItem().getCode());
+                }
+            }
+            
             teachersTable.getItems().remove(selectedIndex);
         } else {
             // Ничего не выбрано.
