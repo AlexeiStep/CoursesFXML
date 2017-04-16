@@ -22,10 +22,10 @@ public class Data {
      */
     private static final ObservableList<Teacher> teachersData = FXCollections.observableArrayList();
     private static int teacherCode = 0;
-    
+
     private static final ObservableList<Group> groupsData = FXCollections.observableArrayList();
     private static int groupCode = 0;
-    
+
     private static final ObservableList<Load> loadsData = FXCollections.observableArrayList();
     private static Integer loadCode = 0;
 
@@ -49,7 +49,7 @@ public class Data {
                     .setOffice("sfgsfg")
                     .setNumberOfStudents(23)
                     .build());
-            
+
             teachersData.add(Teacher.newBuilder()
                     .setCode(this.teacherCode++)
                     .setLastName("qwe")
@@ -79,7 +79,7 @@ public class Data {
                     .build());
         } catch (NullPointerException e) {
         }
-        
+
     }
 
     /**
@@ -90,25 +90,50 @@ public class Data {
     public static ObservableList<Teacher> getTeachersData() {
         return teachersData;
     }
-    
+
     public static ObservableList<Group> getGroupsData() {
         return groupsData;
     }
-    
+
     public static ObservableList<Load> getLoadsData() {
         return loadsData;
     }
-    
-    public static int getTeacherCode(){
+
+    public static int getTeacherCode() {
         return teacherCode++;
     }
-    
-    public static int getGroupCode(){
+
+    public static int getGroupCode() {
         return groupCode++;
     }
-    
-    public static Integer getLoadCode(){
+
+    public static Integer getLoadCode() {
         return loadCode++;
     }
-    
+
+    public static void removeLoad(int Code) {
+
+        String methodName = "";
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        if (stackTraceElements.length >= 3) {
+            StackTraceElement element = stackTraceElements[2];
+            methodName = element.getMethodName();
+        }
+
+        if (methodName.equalsIgnoreCase("handleDeleteTeacher")) {
+            for (int i = 0; i < getLoadsData().size(); i++) {
+                if (getLoadsData().get(i).getTeacherCode() == Code) {
+                    getLoadsData().remove(i);
+                }
+            }
+        } else if (methodName.equalsIgnoreCase("handleDeleteGroup")) {
+            for (int i = 0; i < getLoadsData().size(); i++) {
+                if (getLoadsData().get(i).getGroupCode() == Code) {
+                    getLoadsData().remove(i);
+                }
+            }
+        }
+
+    }
+
 }
