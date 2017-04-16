@@ -49,7 +49,7 @@ public class MainApp extends Application {
     }
 
     
-    // Инициализирует корневой макет.
+    // initialised root layout.
      
     public void initRootLayout() {
         try {
