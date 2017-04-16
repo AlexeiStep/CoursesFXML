@@ -69,6 +69,7 @@ public class TeacherEditDialogController {
         phoneField.setText(teacher.getPhone());
         experienceField.setText(Integer.toString(teacher.getExperience()));
         numberOfLoadsLabel.setText(Integer.toString(teacher.getNumberOfLoads()));
+        
     }
 
     /**
@@ -86,7 +87,6 @@ public class TeacherEditDialogController {
     @FXML
     private void handleAccept() throws InstantiationException, IllegalAccessException {
         if (isInputValid()) {
-            teacher.setCode(Data.getTeacherCode());
             teacher.setLastName(lastNameField.getText());
             teacher.setFirstName(firstNameField.getText());
             teacher.setPatronymic(patronymicField.getText());

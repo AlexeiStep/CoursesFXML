@@ -79,7 +79,7 @@ public class GroupOverviewController {
     @FXML
     private void handleNewGroup() {
         Group tempGroup = Group.newBuilder()
-                .setCode(0)
+                .setCode(Data.getGroupCode())
                 .setNumber(0)
                 .setSpeciality("")
                 .setOffice("")

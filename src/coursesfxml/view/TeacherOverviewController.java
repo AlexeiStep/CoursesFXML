@@ -90,7 +90,7 @@ public class TeacherOverviewController {
     @FXML
     private void handleNewTeacher() {
         Teacher tempTeacher = Teacher.newBuilder()
-                .setCode(0)
+                .setCode(Data.getTeacherCode())
                 .setLastName("")
                 .setFirstName("")
                 .setPatronymic("")

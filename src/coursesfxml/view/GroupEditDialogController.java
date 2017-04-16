@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  * @author MrHuySGory
  */
 public class GroupEditDialogController {
-    
+
     @FXML
     private TextField numberField;
     @FXML
@@ -31,7 +31,7 @@ public class GroupEditDialogController {
     private Stage dialogStage;
     private Group group;
     private boolean acceptClicked = false;
-    
+
     private MainApp mainApp;
 
     /**
@@ -50,11 +50,10 @@ public class GroupEditDialogController {
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
-    
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
-    
 
     /**
      * Задаёт адресата, информацию о котором будем менять.
@@ -85,8 +84,7 @@ public class GroupEditDialogController {
     @FXML
     private void handleAccept() throws InstantiationException, IllegalAccessException {
         if (isInputValid()) {
-            
-            group.setCode(Data.getGroupCode());
+
             group.setNumber(Integer.parseInt(numberField.getText()));
             group.setSpeciality(specialityField.getText());
             group.setOffice(officeField.getText());
@@ -113,10 +111,9 @@ public class GroupEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (numberField.getText() == null 
-                || numberField.getText().length() == 0 
-                || Integer.parseInt(numberField.getText()) < 111 
-              /*  || (Integer.parseInt(numberField.getText()) != group.getCode() && ifRepeated(Integer.parseInt(numberField.getText()))) */) {
+        if (numberField.getText() == null
+                || numberField.getText().length() == 0
+                || Integer.parseInt(numberField.getText()) < 111 /*  || (Integer.parseInt(numberField.getText()) != group.getCode() && ifRepeated(Integer.parseInt(numberField.getText()))) */) {
             errorMessage += "Некорректный номер группы!\n";
         }
 
@@ -128,8 +125,8 @@ public class GroupEditDialogController {
             errorMessage += "Некорректно введён факультет!\n";
         }
 
-        if (numberOfStudentsField.getText() == null 
-                || numberOfStudentsField.getText().length() == 0 
+        if (numberOfStudentsField.getText() == null
+                || numberOfStudentsField.getText().length() == 0
                 || Integer.parseInt(numberOfStudentsField.getText()) < 1) {
             errorMessage += "Некорректное количество студентов!\n";
         } else {
@@ -157,16 +154,16 @@ public class GroupEditDialogController {
             return false;
         }
     }
-    
-    /*
-    private boolean ifRepeated(Integer num){
-    for(Group g: mainApp.data.getGroupsData()){
-            if(num.equals(g.getNumber()) == true){
-                return true;
-            }
-        }
-    return false;
-    }
 
-    */
+    /*
+     private boolean ifRepeated(Integer num){
+     for(Group g: mainApp.data.getGroupsData()){
+     if(num.equals(g.getNumber()) == true){
+     return true;
+     }
+     }
+     return false;
+     }
+
+     */
 }

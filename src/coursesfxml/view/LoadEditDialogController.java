@@ -80,12 +80,6 @@ public class LoadEditDialogController {
         if (methodName.equalsIgnoreCase("handleNewLoad")) {
 
             codeLabel.setText(Integer.toString(load.getCode()));
-            teacherCodeLabel.setText(Integer.toString(load.getTeacher().getValue().getCode()));
-            groupCodeLabel.setText(Integer.toString(load.getGroup().getValue().getNumber()));
-            numberOfHoursesField.setText(Integer.toString(load.getNumberOfHourses()));
-            subjectField.setText(load.getSubject());
-            typeOfEmploymentField.setText(load.getTypeOfEmployment());
-            paymentLabel.setText(Integer.toString(load.getPayment()));
         }
         
         */

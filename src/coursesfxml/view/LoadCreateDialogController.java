@@ -111,7 +111,13 @@ public class LoadCreateDialogController {
             load.setSubject(subjectField.getText());
             load.setTypeOfEmployment(typeOfEmploymentField.getText());
             load.setPayment(payment(subjectField.getText(), typeOfEmploymentField.getText()));
-
+            
+            for(Teacher t: Data.getTeachersData()){
+                if(t.getFullName().equalsIgnoreCase(teacherNameBox.getSelectionModel().getSelectedItem().toString()) == true){
+                    t.increaseNumberOfLoads();
+                }
+            }
+            
             acceptClicked = true;
             dialogStage.close();
         }
