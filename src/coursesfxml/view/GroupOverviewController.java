@@ -8,8 +8,10 @@ package coursesfxml.view;
 import coursesfxml.Data;
 import coursesfxml.MainApp;
 import coursesfxml.model.Group;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -123,6 +125,18 @@ public class GroupOverviewController {
      */
     @FXML
     private void handleDeleteGroup() {
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Предупреждение");
+        alert.setHeaderText("При удалении группы произойдёт удаление её нагрузки");
+        alert.setContentText("Удалить группу?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+
+        } else {
+            return;
+        }
 
         int selectedIndex = groupsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -137,7 +151,7 @@ public class GroupOverviewController {
             groupsTable.getItems().remove(selectedIndex);
         } else {
             // Ничего не выбрано.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("Ошибка выбора");
             alert.setHeaderText("Не выбрана группа");
