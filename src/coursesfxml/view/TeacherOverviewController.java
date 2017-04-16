@@ -9,9 +9,11 @@ import coursesfxml.Data;
 import coursesfxml.MainApp;
 import coursesfxml.model.Load;
 import coursesfxml.model.Teacher;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -59,12 +61,10 @@ public class TeacherOverviewController {
         phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
         experienceColumn.setCellValueFactory(cellData -> cellData.getValue().experienceProperty().asObject());
 
-        
-         // Слушаем изменения выбора, и при изменении отображаем
-         // дополнительную информацию об адресате.
-         //teachersTable.getSelectionModel().selectedItemProperty().addListener(
-         //(observable, oldValue, newValue) -> System.out.print(newValue.getFullName()));
-         
+        // Слушаем изменения выбора, и при изменении отображаем
+        // дополнительную информацию об адресате.
+        //teachersTable.getSelectionModel().selectedItemProperty().addListener(
+        //(observable, oldValue, newValue) -> System.out.print(newValue.getFullName()));
     }
 
     /**
@@ -131,26 +131,37 @@ public class TeacherOverviewController {
             alert.showAndWait();
         }
     }
-    
+
     /**
      * Вызывается, когда пользователь кликает по кнопке удаления.
      */
     @FXML
     private void handleDeleteTeacher() {
-        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Предупреждение");
+        alert.setHeaderText("При удалении преподавателя произойдёт удаление его нагрузки");
+        alert.setContentText("Удалить преподавателя?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+
+        } else {
+            return;
+        }
+
         int selectedIndex = teachersTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             //Removal of the load after removal of the teacher
-            for(int i=0; i<Data.getLoadsData().size(); i++){
-                if(Data.getLoadsData().get(i).getTeacherCode() == teachersTable.getSelectionModel().getSelectedItem().getCode()){
+            for (int i = 0; i < Data.getLoadsData().size(); i++) {
+                if (Data.getLoadsData().get(i).getTeacherCode() == teachersTable.getSelectionModel().getSelectedItem().getCode()) {
                     Data.removeLoad(teachersTable.getSelectionModel().getSelectedItem().getCode());
                 }
             }
-            
+
             teachersTable.getItems().remove(selectedIndex);
         } else {
             // Ничего не выбрано.
-            Alert alert = new Alert(AlertType.WARNING);
+            alert = new Alert(AlertType.WARNING);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("Ошибка выбора");
             alert.setHeaderText("Не выбран преподаватель");
