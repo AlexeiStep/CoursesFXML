@@ -57,7 +57,7 @@ public class Data {
                     .setPatronymic("sdf")
                     .setPhone("89170251015")
                     .setExperience(3)
-                    .setNumberOfLoads(0)
+                    .setNumberOfLoads(1)
                     .build());
             teachersData.add(Teacher.newBuilder()
                     .setCode(this.teacherCode++)
