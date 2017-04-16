@@ -75,14 +75,12 @@ public class LoadOverviewController {
         // Добавление в таблицу данных из наблюдаемого списка
         loadsTable.setItems(Data.getLoadsData());
     }
-    
-    
-    
+
     @FXML
     private void handleExit() {
         System.exit(0);
     }
-    
+
     /**
      * Вызывается, когда пользователь кликает по кнопке New... Открывает
      * диалоговое окно с дополнительной информацией новой группы.
@@ -130,7 +128,7 @@ public class LoadOverviewController {
             alert.showAndWait();
         }
     }
-    
+
     /**
      * Вызывается, когда пользователь кликает по кнопке удаления.
      */
@@ -139,6 +137,13 @@ public class LoadOverviewController {
 
         int selectedIndex = loadsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+
+            for (Teacher t : Data.getTeachersData()) {
+                if (t.getFullName().equalsIgnoreCase(loadsTable.getSelectionModel().getSelectedItems().get(selectedIndex).getTeacher().get().getFullName()) == true) {
+                    t.decreaseNumberOfLoads();
+                }
+            }
+
             loadsTable.getItems().remove(selectedIndex);
         } else {
             // Ничего не выбрано.
@@ -151,6 +156,7 @@ public class LoadOverviewController {
             alert.showAndWait();
 
         }
+
     }
-    
+
 }
