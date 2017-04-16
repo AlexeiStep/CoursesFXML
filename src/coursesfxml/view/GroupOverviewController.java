@@ -126,6 +126,14 @@ public class GroupOverviewController {
 
         int selectedIndex = groupsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            
+            //Removal of the load after removal of the group
+            for(int i=0; i<Data.getLoadsData().size(); i++){
+                if(Data.getLoadsData().get(i).getTeacherCode() == groupsTable.getSelectionModel().getSelectedItem().getCode()){
+                    Data.removeLoad(groupsTable.getSelectionModel().getSelectedItem().getCode());
+                }
+            }
+            
             groupsTable.getItems().remove(selectedIndex);
         } else {
             // Ничего не выбрано.
