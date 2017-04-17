@@ -27,7 +27,7 @@ public class Data {
     private static int groupCode = 0;
 
     private static final ObservableList<Load> loadsData = FXCollections.observableArrayList();
-    private static Integer loadCode = 0;
+    private static int loadCode = 0;
 
     /**
      * Конструктор
@@ -109,6 +109,18 @@ public class Data {
 
     public static Integer getLoadCode() {
         return loadCode++;
+    }
+    
+    public static void setTeacherCode(int teacherCode) {
+        Data.teacherCode = teacherCode;
+    }
+
+    public static void setGroupCode(int groupCode) {
+        Data.groupCode = groupCode;
+    }
+
+    public static void setLoadCode(int loadCode) {
+        Data.loadCode = loadCode;
     }
 
     public static void removeLoad(int Code) {
