@@ -8,6 +8,9 @@ package coursesfxml;
 import coursesfxml.model.Group;
 import coursesfxml.model.Load;
 import coursesfxml.model.Teacher;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -32,54 +35,20 @@ public class Data {
     /**
      * Конструктор
      */
-    public Data() {
-        // В качестве образца добавляем некоторые данные
+    public Data(){
+        
         try {
-            groupsData.add(Group.newBuilder()
-                    .setCode(this.groupCode++)
-                    .setNumber(123)
-                    .setSpeciality("PI")
-                    .setOffice("MexMaT")
-                    .setNumberOfStudents(23)
-                    .build());
-            groupsData.add(Group.newBuilder()
-                    .setCode(this.groupCode++)
-                    .setNumber(444)
-                    .setSpeciality("PfssgsI")
-                    .setOffice("sfgsfg")
-                    .setNumberOfStudents(23)
-                    .build());
-
-            teachersData.add(Teacher.newBuilder()
-                    .setCode(this.teacherCode++)
-                    .setLastName("qwe")
-                    .setFirstName("rty")
-                    .setPatronymic("sdf")
-                    .setPhone("89170251015")
-                    .setExperience(3)
-                    .setNumberOfLoads(1)
-                    .build());
-            teachersData.add(Teacher.newBuilder()
-                    .setCode(this.teacherCode++)
-                    .setLastName("ttttt")
-                    .setFirstName("trrrrrrrr")
-                    .setPatronymic("eeeeeeee")
-                    .setPhone("89170299999")
-                    .setExperience(3)
-                    .setNumberOfLoads(0)
-                    .build());
-            loadsData.add(Load.newBuilder()
-                    .setCode(this.loadCode++)
-                    .setTeacher(teachersData.get(0))
-                    .setGroup(groupsData.get(0))
-                    .setNumberOfHourses(4)
-                    .setSubject("English")
-                    .setTypeOfEmployment("Lecture")
-                    .setPayment(4)
-                    .build());
-        } catch (NullPointerException e) {
+            DataBase.Conn();
+            DataBase.CreateDB();
+            DataBase.ReadDB();
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
 
     /**
