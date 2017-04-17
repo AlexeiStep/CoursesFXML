@@ -6,10 +6,14 @@
 package coursesfxml.view;
 
 import coursesfxml.Data;
+import coursesfxml.DataBase;
 import coursesfxml.MainApp;
 import coursesfxml.model.Group;
 import coursesfxml.model.Load;
 import coursesfxml.model.Teacher;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -78,6 +82,14 @@ public class LoadOverviewController {
 
     @FXML
     private void handleExit() {
+        try {
+            DataBase.WriteDB();
+            DataBase.CloseDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadOverviewController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoadOverviewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.exit(0);
     }
 
