@@ -74,9 +74,18 @@ public class Load {
         for (Teacher t : Data.getTeachersData()) {
             if (t.getFullName().equalsIgnoreCase(teacherFullName) == true) {
                 this.teacher = new SimpleObjectProperty(t.getSomeObject());
+                return;
             }
         }
-        return;
+    }
+
+    public void setTeacher(int teacherCode) {
+        for (Teacher t : Data.getTeachersData()) {
+            if (t.getCode() == teacherCode) {
+                this.teacher = new SimpleObjectProperty(t.getSomeObject());
+                return;
+            }
+        }
     }
 
     public SimpleObjectProperty<Group> getGroup() {
@@ -95,9 +104,10 @@ public class Load {
         for (Group g : Data.getGroupsData()) {
             if (groupNumber.equals(g.getNumber()) == true) {
                 this.group = new SimpleObjectProperty(g.getSomeObject());
+                return;
             }
         }
-        return;
+
     }
 
     public int getNumberOfHourses() {
@@ -182,9 +192,29 @@ public class Load {
             return this;
         }
 
+        public Builder setTeacher(int teacherCode) {
+            for (Teacher t : Data.getTeachersData()) {
+                if (t.getCode() == teacherCode) {
+                    this.teacher = t;
+                    return this;
+                }
+            }
+            return this;
+        }
+
         public Builder setGroup(Group group) {
             this.group = group;
 
+            return this;
+        }
+
+        public Builder setGroup(Integer groupCode) {
+            for (Group g : Data.getGroupsData()) {
+                if (groupCode.equals(g.getCode()) == true) {
+                    this.group = g;
+                    return this;
+                }
+            }
             return this;
         }
 
