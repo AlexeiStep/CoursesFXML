@@ -6,9 +6,13 @@
 package coursesfxml.view;
 
 import coursesfxml.Data;
+import coursesfxml.DataBase;
 import coursesfxml.MainApp;
 import coursesfxml.model.Group;
+import java.sql.SQLException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -71,6 +75,14 @@ public class GroupOverviewController {
 
     @FXML
     private void handleExit() {
+        try {
+            DataBase.WriteDB();
+            DataBase.CloseDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadOverviewController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoadOverviewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.exit(0);
     }
     
