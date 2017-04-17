@@ -115,7 +115,7 @@ public class DataBase {
                     .setNumberOfLoads(resSetTeachers.getInt("numberOfLoads"))
                     .build());
 
-            Data.setTeacherCode(resSetTeachers.getInt("code"));
+            Data.setTeacherCode(resSetTeachers.getInt("code")+1);
         }
 
         resSetGroups = statmt.executeQuery("SELECT * FROM Groups");
@@ -130,7 +130,7 @@ public class DataBase {
                     .setNumberOfStudents(resSetGroups.getInt("numberOfStudents"))
                     .build());
 
-            Data.setGroupCode(resSetGroups.getInt("code"));
+            Data.setGroupCode(resSetGroups.getInt("code")+1);
         }
 
         resSetLoads = statmt.executeQuery("SELECT * FROM Loads");
@@ -147,7 +147,7 @@ public class DataBase {
                     .setPayment(resSetLoads.getInt("payment"))
                     .build());
 
-            Data.setLoadCode(resSetLoads.getInt("code"));
+            Data.setLoadCode(resSetLoads.getInt("code")+1);
         }
 
         System.out.println("Tables is uploaded!");
