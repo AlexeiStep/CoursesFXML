@@ -155,7 +155,7 @@ public class GroupOverviewController {
             
             //Removal of the load after removal of the group
             for(int i=0; i<Data.getLoadsData().size(); i++){
-                if(Data.getLoadsData().get(i).getTeacherCode() == groupsTable.getSelectionModel().getSelectedItem().getCode()){
+                if(Data.getLoadsData().get(i).getGroupCode() == groupsTable.getSelectionModel().getSelectedItem().getCode()){
                     Data.removeLoad(groupsTable.getSelectionModel().getSelectedItem().getCode());
                 }
             }
