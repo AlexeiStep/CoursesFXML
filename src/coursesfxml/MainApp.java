@@ -42,6 +42,7 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Курсы повышения квалификации");
         
         this.primaryStage.getIcons().add(new Image("file:resources/images/icon.png"));
+        this.primaryStage.setResizable(false);
 
         initRootLayout();
 

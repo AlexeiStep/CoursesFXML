@@ -53,6 +53,7 @@ public class TeacherEditDialogController {
      */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
+        this.dialogStage.setResizable(false);
     }
 
     /**
