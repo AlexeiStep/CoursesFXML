@@ -55,6 +55,7 @@ public class LoadEditDialogController {
      */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
+        this.dialogStage.setResizable(false);
     }
 
     public void setMainApp(MainApp mainApp) {
