@@ -49,6 +49,7 @@ public class GroupEditDialogController {
      */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
+        this.dialogStage.setResizable(false);
     }
 
     public void setMainApp(MainApp mainApp) {
