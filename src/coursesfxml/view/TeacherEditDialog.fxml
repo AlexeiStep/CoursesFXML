@@ -38,7 +38,7 @@
             <Label fx:id="numberOfLoadsLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button layoutX="165.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAccept" text="Применить" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="85.0" />
+      <Button defaultButton="true" layoutX="165.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAccept" text="Применить" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="85.0" />
       <Button layoutX="234.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleCancel" text="Отмена" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
