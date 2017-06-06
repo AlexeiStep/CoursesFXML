@@ -39,7 +39,7 @@
             <ChoiceBox fx:id="groupNumberBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="99.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAccept" text="Принять" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="85.0" />
+      <Button defaultButton="true" layoutX="99.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAccept" text="Принять" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="85.0" />
       <Button layoutX="173.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleCancel" text="Отмена" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
